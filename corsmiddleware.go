@@ -100,8 +100,8 @@ func (c *CORS) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	c.next.ServeHTTP(res, req)
 	c.injectOrigin(res, origin)
+	c.next.ServeHTTP(res, req)
 }
 
 func (c *CORS) injectOrigin(res http.ResponseWriter, origin string) {
